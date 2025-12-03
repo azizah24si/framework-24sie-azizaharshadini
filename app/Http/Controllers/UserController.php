@@ -31,6 +31,7 @@ class UserController extends Controller
     {
         $data['name']     = $request->name;
         $data['email']    = $request->email;
+        $data['role']     = $request->role;
         $data['password'] = Hash::make($request->password);
 
         User::create($data);
@@ -60,11 +61,11 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $id = $id;
+        $id   = $id;
         $user = User::findOrFail($id);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user->name     = $request->name;
+        $user->email    = $request->email;
         $user->password = $request->password;
 
         $user->save();
